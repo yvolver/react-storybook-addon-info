@@ -153,15 +153,6 @@ var Story = function (_React$Component) {
   }
 
   (0, _createClass3.default)(Story, [{
-    key: '_renderStory',
-    value: function _renderStory() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.props.children
-      );
-    }
-  }, {
     key: '_renderInline',
     value: function _renderInline() {
       return _react2.default.createElement(
@@ -169,24 +160,28 @@ var Story = function (_React$Component) {
         null,
         _react2.default.createElement(
           'div',
-          { style: stylesheet.infoPage },
+          { className: 'sbai-header-wrapper', style: stylesheet.infoPage },
           _react2.default.createElement(
             'div',
-            { style: stylesheet.infoBody },
+            { className: 'sbai-header-container', style: stylesheet.infoBody },
             this._getInfoHeader()
           )
         ),
         _react2.default.createElement(
           'div',
-          null,
-          this._renderStory()
+          { className: 'sbai-render-wrapper' },
+          _react2.default.createElement(
+            'div',
+            { className: 'sbai-render-container' },
+            this.props.children
+          )
         ),
         _react2.default.createElement(
           'div',
-          { style: stylesheet.infoPage },
+          { className: 'sbai-details-wrapper', style: stylesheet.infoPage },
           _react2.default.createElement(
             'div',
-            { style: stylesheet.infoBody },
+            { className: 'sbai-details-container', style: stylesheet.infoBody },
             this._getInfoContent(),
             this._getSourceCode(),
             this._getPropTables()

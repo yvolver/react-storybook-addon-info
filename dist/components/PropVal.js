@@ -90,7 +90,7 @@ function previewArray(val) {
   }
   return _react2.default.createElement(
     'span',
-    { style: valueStyles.array },
+    { className: 'sbai-fragment--array', style: valueStyles.array },
     '[',
     (0, _reactAddonsCreateFragment2.default)(items),
     ']'
@@ -117,7 +117,7 @@ function previewObject(val) {
   }
   return _react2.default.createElement(
     'span',
-    { style: valueStyles.object },
+    { className: 'sbai-fragment--object', style: valueStyles.object },
     '{',
     (0, _reactAddonsCreateFragment2.default)(items),
     '}'
@@ -130,7 +130,7 @@ function previewProp(val) {
   if (typeof val === 'number') {
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.number },
+      { className: 'sbai-fragment--number', style: valueStyles.number },
       val
     );
   } else if (typeof val === 'string') {
@@ -139,7 +139,7 @@ function previewProp(val) {
     }
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.string },
+      { className: 'sbai-fragment--string', style: valueStyles.string },
       '"',
       val,
       '"'
@@ -148,7 +148,7 @@ function previewProp(val) {
   } else if (typeof val === 'boolean') {
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.bool },
+      { className: 'sbai-fragment--boolean', style: valueStyles.bool },
       '' + val
     );
   } else if (Array.isArray(val)) {
@@ -156,25 +156,25 @@ function previewProp(val) {
   } else if (typeof val === 'function') {
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.func },
+      { className: 'sbai-fragment--function', style: valueStyles.func },
       val.name ? val.name + '()' : 'anonymous()'
     );
   } else if (!val) {
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.empty },
+      { className: 'sbai-fragment--empty', style: valueStyles.empty },
       '' + val
     );
   } else if ((typeof val === 'undefined' ? 'undefined' : (0, _typeof3.default)(val)) !== 'object') {
     content = _react2.default.createElement(
       'span',
-      null,
+      { className: 'sbai-fragment--not-object' },
       '…'
     );
   } else if (_react2.default.isValidElement(val)) {
     content = _react2.default.createElement(
       'span',
-      { style: valueStyles.object },
+      { className: 'sbai-fragment--node', style: valueStyles.object },
       '<' + (val.type.displayName || val.type.name || val.type) + ' />'
     );
   } else {
@@ -184,7 +184,7 @@ function previewProp(val) {
   if (!braceWrap) return content;
   return _react2.default.createElement(
     'span',
-    null,
+    { className: 'sbai-fragment--unknown' },
     '{',
     content,
     '}'

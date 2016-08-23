@@ -107,6 +107,30 @@ var PropTable = function (_React$Component) {
         }
       }
 
+      if (type.propDescriptions) {
+        for (var _property2 in type.propDescriptions) {
+          // if there's no matching prop, skip the description
+          if (!type.propDescriptions.hasOwnProperty(_property2)) {
+            continue;
+          }
+
+          // The value of the description
+          var _value = type.propDescriptions[_property2];
+
+          // Skip undefined values
+          if (_value === undefined) {
+            continue;
+          }
+
+          // If we don't have this prop yet, save it
+          if (!props[_property2]) {
+            props[_property2] = { property: _property2 };
+          }
+
+          props[_property2].propDescriptions = _value;
+        }
+      }
+
       var array = (0, _values2.default)(props);
       if (!array.length) {
         return _react2.default.createElement(
@@ -121,7 +145,7 @@ var PropTable = function (_React$Component) {
 
       return _react2.default.createElement(
         'table',
-        { style: stylesheet.propTable },
+        { className: 'props-table', style: stylesheet.propTable },
         _react2.default.createElement(
           'thead',
           null,
@@ -130,23 +154,28 @@ var PropTable = function (_React$Component) {
             null,
             _react2.default.createElement(
               'th',
-              null,
+              { className: 'props-table__header' },
               'property'
             ),
             _react2.default.createElement(
               'th',
-              null,
+              { className: 'props-table__header' },
               'propType'
             ),
             _react2.default.createElement(
               'th',
-              null,
+              { className: 'props-table__header' },
               'required'
             ),
             _react2.default.createElement(
               'th',
-              null,
+              { className: 'props-table__header' },
               'default'
+            ),
+            _react2.default.createElement(
+              'th',
+              { className: 'props-table__header' },
+              'description'
             )
           )
         ),
@@ -156,26 +185,31 @@ var PropTable = function (_React$Component) {
           array.map(function (row) {
             return _react2.default.createElement(
               'tr',
-              { key: row.property },
+              { className: 'props-table__row', key: row.property },
               _react2.default.createElement(
                 'td',
-                null,
+                { className: 'props-table__cell cell__property' },
                 row.property
               ),
               _react2.default.createElement(
                 'td',
-                null,
+                { className: 'props-table__cell cell__type' },
                 row.propType
               ),
               _react2.default.createElement(
                 'td',
-                null,
+                { className: 'props-table__cell cell__required' },
                 row.required
               ),
               _react2.default.createElement(
                 'td',
-                null,
+                { className: 'props-table__cell cell__default' },
                 row.defaultValue === undefined ? '-' : _react2.default.createElement(_PropVal2.default, { val: row.defaultValue })
+              ),
+              _react2.default.createElement(
+                'td',
+                { className: 'props-table__cell cell__description' },
+                row.description
               )
             );
           })
