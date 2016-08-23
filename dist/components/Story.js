@@ -169,6 +169,15 @@ var Story = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
+          { className: 'sbai-details-wrapper', style: stylesheet.infoPage },
+          _react2.default.createElement(
+            'div',
+            { className: 'sbai-details-container', style: stylesheet.infoBody },
+            this._getInfoContent()
+          )
+        ),
+        _react2.default.createElement(
+          'div',
           { className: 'sbai-render-wrapper' },
           _react2.default.createElement(
             'div',
@@ -182,7 +191,6 @@ var Story = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'sbai-details-container', style: stylesheet.infoBody },
-            this._getInfoContent(),
             this._getSourceCode(),
             this._getPropTables()
           )
