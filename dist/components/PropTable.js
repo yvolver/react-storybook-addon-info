@@ -69,10 +69,17 @@ var PropTable = function (_React$Component) {
   }
 
   (0, _createClass3.default)(PropTable, [{
+    key: 'createMarkup',
+    value: function createMarkup(data) {
+      return { __html: data };
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var type = this.props.type;
-      console.warn("Type: ", type);
+
       if (!type) {
         return null;
       }
@@ -132,7 +139,7 @@ var PropTable = function (_React$Component) {
       }
 
       var array = (0, _values2.default)(props);
-      console.warn('sbai.PropTable ', array);
+
       if (!array.length) {
         return _react2.default.createElement(
           'small',
@@ -210,7 +217,7 @@ var PropTable = function (_React$Component) {
               _react2.default.createElement(
                 'td',
                 { className: 'props-table__cell cell__description' },
-                row.description
+                row.propDescriptions === undefined ? '-' : _this2.createMarkup(row.propDescriptions)
               )
             );
           })

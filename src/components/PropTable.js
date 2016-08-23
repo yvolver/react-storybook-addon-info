@@ -20,9 +20,13 @@ const stylesheet = {
 };
 
 export default class PropTable extends React.Component {
+  createMarkup(data) {
+    return { __html: data };
+  }
+
   render() {
     const type = this.props.type;
-    console.warn("Type: ", type);
+
     if (!type) {
       return null;
     }
@@ -78,7 +82,7 @@ export default class PropTable extends React.Component {
     }
 
     const array = Object.values(props);
-    console.warn('sbai.PropTable ', array);
+
     if (!array.length) {
       return <small>No propTypes defined!</small>;
     }
@@ -103,8 +107,12 @@ export default class PropTable extends React.Component {
               <td className="props-table__cell cell__property">{row.property}</td>
               <td className="props-table__cell cell__type">{row.propType}</td>
               <td className="props-table__cell cell__required">{row.required}</td>
-              <td className="props-table__cell cell__default">{row.defaultValue === undefined ? '-' : <PropVal val={row.defaultValue} />}</td>
-              <td className="props-table__cell cell__description">{row.description}</td>
+              <td className="props-table__cell cell__default">
+                {row.defaultValue === undefined ? '-' : <PropVal val={row.defaultValue} />}
+              </td>
+              <td className="props-table__cell cell__description">
+                {row.propDescriptions === undefined ? '-' : this.createMarkup(row.propDescriptions)}
+              </td>
             </tr>
           ))}
         </tbody>
