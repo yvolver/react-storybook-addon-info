@@ -130,8 +130,8 @@ export default class Story extends React.Component {
     };
 
     return (
-      <div>
-        <div style={stylesheet.children}>
+      <div className="sbai-overlay">
+        <div className="sbai-overlay__children" style={stylesheet.children}>
           { this.props.children }
         </div>
         <a style={linkStyle} onClick={openOverlay}>?</a>
@@ -156,7 +156,7 @@ export default class Story extends React.Component {
     }
 
     return (
-      <div style={stylesheet.header.body}>
+      <div className="sbai-info__header" style={stylesheet.header.body}>
         <h1 style={stylesheet.header.h1}>{this.props.context.kind}</h1>
         <h2 style={stylesheet.header.h2}>{this.props.context.story}</h2>
       </div>
@@ -178,7 +178,7 @@ export default class Story extends React.Component {
     }
     const source = lines.map(s => s.slice(padding)).join('\n');
     return (
-      <div style={stylesheet.infoContent}>
+      <div className="sbai-info__content" style={stylesheet.infoContent}>
         {MTRC(source).tree}
       </div>
     );
@@ -190,7 +190,7 @@ export default class Story extends React.Component {
     }
 
     return (
-      <div>
+      <div className="sbai-info__source">
         <h1 style={stylesheet.source.h1}>Story Source</h1>
         <Pre>
         {React.Children.map(this.props.children, (root, idx) => (
@@ -248,7 +248,7 @@ export default class Story extends React.Component {
 
     const propTables = array.map(function (type, idx) {
       return (
-        <div key={idx}>
+        <div className="sbai-info__table" key={idx}>
           <h2 style={stylesheet.propTableHead}>"{type.displayName || type.name}" Component</h2>
           <PropTable type={type} />
         </div>
@@ -260,7 +260,7 @@ export default class Story extends React.Component {
     }
 
     return (
-      <div>
+      <div className="sbai-info__prop-tables">
         <h1 style={stylesheet.source.h1}>Prop Types</h1>
         {propTables}
       </div>

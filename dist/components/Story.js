@@ -213,10 +213,10 @@ var Story = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'sbai-overlay' },
         _react2.default.createElement(
           'div',
-          { style: stylesheet.children },
+          { className: 'sbai-overlay__children', style: stylesheet.children },
           this.props.children
         ),
         _react2.default.createElement(
@@ -256,7 +256,7 @@ var Story = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: stylesheet.header.body },
+        { className: 'sbai-info__header', style: stylesheet.header.body },
         _react2.default.createElement(
           'h1',
           { style: stylesheet.header.h1 },
@@ -289,7 +289,7 @@ var Story = function (_React$Component) {
       }).join('\n');
       return _react2.default.createElement(
         'div',
-        { style: stylesheet.infoContent },
+        { className: 'sbai-info__content', style: stylesheet.infoContent },
         (0, _markdownToReactComponents2.default)(source).tree
       );
     }
@@ -302,7 +302,7 @@ var Story = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'sbai-info__source' },
         _react2.default.createElement(
           'h1',
           { style: stylesheet.source.h1 },
@@ -367,7 +367,7 @@ var Story = function (_React$Component) {
       var propTables = array.map(function (type, idx) {
         return _react2.default.createElement(
           'div',
-          { key: idx },
+          { className: 'sbai-info__table', key: idx },
           _react2.default.createElement(
             'h2',
             { style: stylesheet.propTableHead },
@@ -385,7 +385,7 @@ var Story = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'sbai-info__prop-tables' },
         _react2.default.createElement(
           'h1',
           { style: stylesheet.source.h1 },
