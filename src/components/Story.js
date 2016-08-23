@@ -84,27 +84,21 @@ export default class Story extends React.Component {
     MTRC.configure(this.props.mtrcConf);
   }
 
-  _renderStory() {
-    return (
-      <div>
-        { this.props.children }
-      </div>
-    );
-  }
-
   _renderInline() {
     return (
       <div>
-        <div style={stylesheet.infoPage}>
-          <div style={stylesheet.infoBody} >
+        <div className="sbai-header-wrapper" style={stylesheet.infoPage}>
+          <div className="sbai-header-container" style={stylesheet.infoBody} >
             { this._getInfoHeader() }
           </div>
         </div>
-        <div>
-            { this._renderStory() }
+        <div className="sbai-render-wrapper">
+          <div className="sbai-render-container">
+            { this.props.children }
+          </div>
         </div>
-        <div style={stylesheet.infoPage}>
-          <div style={stylesheet.infoBody} >
+        <div className="sbai-details-wrapper" style={stylesheet.infoPage}>
+          <div className="sbai-details-container" style={stylesheet.infoBody} >
             { this._getInfoContent() }
             { this._getSourceCode() }
             { this._getPropTables() }

@@ -48,7 +48,7 @@ function previewArray(val) {
     delete items[`c${val.length - 1}`];
   }
   return (
-    <span style={valueStyles.array}>
+    <span className="sbai-fragment--array" style={valueStyles.array}>
       [{createFragment(items)}]
     </span>
   );
@@ -69,7 +69,7 @@ function previewObject(val) {
     delete items[`m${names.length - 1}`];
   }
   return (
-    <span style={valueStyles.object}>
+    <span className="sbai-fragment--object" style={valueStyles.object}>
       {'{'}{createFragment(items)}{'}'}
     </span>
   );
@@ -79,26 +79,26 @@ function previewProp(val) {
   let braceWrap = true;
   let content = null;
   if (typeof val === 'number') {
-    content = <span style={valueStyles.number}>{val}</span>;
+    content = <span className="sbai-fragment--number" style={valueStyles.number}>{val}</span>;
   } else if (typeof val === 'string') {
     if (val.length > 50) {
       val = val.slice(0, 50) + '…';
     }
-    content = <span style={valueStyles.string}>"{val}"</span>;
+    content = <span className="sbai-fragment--string" style={valueStyles.string}>"{val}"</span>;
     braceWrap = false;
   } else if (typeof val === 'boolean') {
-    content = <span style={valueStyles.bool}>{`${val}`}</span>;
+    content = <span className="sbai-fragment--boolean" style={valueStyles.bool}>{`${val}`}</span>;
   } else if (Array.isArray(val)) {
     content = previewArray(val);
   } else if (typeof val === 'function') {
-    content = <span style={valueStyles.func}>{val.name ? `${val.name}()` : 'anonymous()'}</span>;
+    content = <span className="sbai-fragment--function" style={valueStyles.func}>{val.name ? `${val.name}()` : 'anonymous()'}</span>;
   } else if (!val) {
-    content = <span style={valueStyles.empty}>{`${val}`}</span>;
+    content = <span className="sbai-fragment--empty" style={valueStyles.empty}>{`${val}`}</span>;
   } else if (typeof val !== 'object') {
-    content = <span>…</span>;
+    content = <span className="sbai-fragment--not-object">…</span>;
   } else if (React.isValidElement(val)) {
     content = (
-      <span style={valueStyles.object}>
+      <span className="sbai-fragment--node" style={valueStyles.object}>
         {`<${val.type.displayName || val.type.name || val.type} />`}
       </span>
     );
@@ -107,7 +107,7 @@ function previewProp(val) {
   }
 
   if (!braceWrap) return content;
-  return <span>&#123;{content}&#125;</span>;
+  return <span className="sbai-fragment--unknown">&#123;{content}&#125;</span>;
 }
 
 export default class PropVal extends React.Component {

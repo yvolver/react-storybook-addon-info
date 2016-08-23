@@ -57,6 +57,26 @@ export default class PropTable extends React.Component {
       }
     }
 
+    if (type.propDescriptions) {
+      for (const property in type.propDescriptions) {
+        // if there's no matching prop, skip the description
+        if (!type.propDescriptions.hasOwnProperty(property)) { continue; }
+
+        // The value of the description
+        const value = type.propDescriptions[property];
+
+        // Skip undefined values
+        if (value === undefined) { continue; }
+
+        // If we don't have this prop yet, save it
+        if (!props[property]) {
+          props[property] = { property };
+        }
+
+        props[property].propDescriptions = value;
+      }
+    }
+
     const array = Object.values(props);
     if (!array.length) {
       return <small>No propTypes defined!</small>;
@@ -66,22 +86,24 @@ export default class PropTable extends React.Component {
     });
 
     return (
-      <table style={stylesheet.propTable}>
+      <table className="props-table" style={stylesheet.propTable}>
         <thead>
           <tr>
-            <th>property</th>
-            <th>propType</th>
-            <th>required</th>
-            <th>default</th>
+            <th className="props-table__header">property</th>
+            <th className="props-table__header">propType</th>
+            <th className="props-table__header">required</th>
+            <th className="props-table__header">default</th>
+            <th className="props-table__header">description</th>
           </tr>
         </thead>
         <tbody>
           {array.map(row => (
-            <tr key={row.property}>
-              <td>{row.property}</td>
-              <td>{row.propType}</td>
-              <td>{row.required}</td>
-              <td>{row.defaultValue === undefined ? '-' : <PropVal val={row.defaultValue} />}</td>
+            <tr className="props-table__row" key={row.property}>
+              <td className="props-table__cell cell__property">{row.property}</td>
+              <td className="props-table__cell cell__type">{row.propType}</td>
+              <td className="props-table__cell cell__required">{row.required}</td>
+              <td className="props-table__cell cell__default">{row.defaultValue === undefined ? '-' : <PropVal val={row.defaultValue} />}</td>
+              <td className="props-table__cell cell__description">{row.description}</td>
             </tr>
           ))}
         </tbody>
