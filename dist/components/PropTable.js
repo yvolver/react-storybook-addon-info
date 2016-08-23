@@ -217,7 +217,7 @@ var PropTable = function (_React$Component) {
               _react2.default.createElement(
                 'td',
                 { className: 'props-table__cell cell__description' },
-                row.propDescriptions === undefined ? '-' : _this2.createMarkup(row.propDescriptions)
+                row.propDescriptions === undefined ? '-' : _react2.default.createElement('div', { dangerouslySetInnerHTML: _this2.createMarkup(row.propDescriptions) })
               )
             );
           })

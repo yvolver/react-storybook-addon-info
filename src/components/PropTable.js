@@ -111,7 +111,7 @@ export default class PropTable extends React.Component {
                 {row.defaultValue === undefined ? '-' : <PropVal val={row.defaultValue} />}
               </td>
               <td className="props-table__cell cell__description">
-                {row.propDescriptions === undefined ? '-' : this.createMarkup(row.propDescriptions)}
+                {row.propDescriptions === undefined ? '-' : <div dangerouslySetInnerHTML={this.createMarkup(row.propDescriptions)}/> }
               </td>
             </tr>
           ))}
