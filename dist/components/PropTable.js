@@ -72,7 +72,7 @@ var PropTable = function (_React$Component) {
     key: 'render',
     value: function render() {
       var type = this.props.type;
-
+      console.warn("Type: ", type);
       if (!type) {
         return null;
       }
@@ -132,6 +132,7 @@ var PropTable = function (_React$Component) {
       }
 
       var array = (0, _values2.default)(props);
+      console.warn('sbai.PropTable ', array);
       if (!array.length) {
         return _react2.default.createElement(
           'small',

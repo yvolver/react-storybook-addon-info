@@ -22,7 +22,7 @@ const stylesheet = {
 export default class PropTable extends React.Component {
   render() {
     const type = this.props.type;
-
+    console.warn("Type: ", type);
     if (!type) {
       return null;
     }
@@ -78,6 +78,7 @@ export default class PropTable extends React.Component {
     }
 
     const array = Object.values(props);
+    console.warn('sbai.PropTable ', array);
     if (!array.length) {
       return <small>No propTypes defined!</small>;
     }
