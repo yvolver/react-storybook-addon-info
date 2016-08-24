@@ -195,11 +195,26 @@ export default class Story extends React.Component {
 
     return (
       <div className="sbai-info__source">
-        <h1 style={stylesheet.source.h1}>Story Source</h1>
+        <h1 style={stylesheet.source.h1}>Source</h1>
         <Pre>
         {React.Children.map(this.props.children, (root, idx) => (
           <Node key={idx} depth={0} node={root} />
         ))}
+        </Pre>
+      </div>
+    );
+  }
+
+  _getCustomSourceCode() {
+    if (!this.props.customSource) {
+      return null;
+    }
+
+    return (
+      <div className="sbai-info__source">
+        <h1 style={stylesheet.source.h1}>Source</h1>
+        <Pre>
+          {this.props.customSource}
         </Pre>
       </div>
     );
@@ -290,6 +305,7 @@ Story.propTypes = {
   showInline: React.PropTypes.bool,
   showHeader: React.PropTypes.bool,
   showSource: React.PropTypes.bool,
+  customSource: React.PropTypes.any,
   children: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.array,

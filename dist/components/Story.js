@@ -314,7 +314,7 @@ var Story = function (_React$Component) {
         _react2.default.createElement(
           'h1',
           { style: stylesheet.source.h1 },
-          'Story Source'
+          'Source'
         ),
         _react2.default.createElement(
           _markdown.Pre,
@@ -322,6 +322,28 @@ var Story = function (_React$Component) {
           _react2.default.Children.map(this.props.children, function (root, idx) {
             return _react2.default.createElement(_Node2.default, { key: idx, depth: 0, node: root });
           })
+        )
+      );
+    }
+  }, {
+    key: '_getCustomSourceCode',
+    value: function _getCustomSourceCode() {
+      if (!this.props.customSource) {
+        return null;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'sbai-info__source' },
+        _react2.default.createElement(
+          'h1',
+          { style: stylesheet.source.h1 },
+          'Source'
+        ),
+        _react2.default.createElement(
+          _markdown.Pre,
+          null,
+          this.props.customSource
         )
       );
     }
@@ -428,6 +450,7 @@ Story.propTypes = {
   showInline: _react2.default.PropTypes.bool,
   showHeader: _react2.default.PropTypes.bool,
   showSource: _react2.default.PropTypes.bool,
+  customSource: _react2.default.PropTypes.any,
   children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.object, _react2.default.PropTypes.array]),
   mtrcConf: _react2.default.PropTypes.object
 };
