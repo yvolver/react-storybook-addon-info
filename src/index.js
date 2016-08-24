@@ -61,6 +61,7 @@ export default {
         showInline: Boolean(options.inline),
         showHeader: Boolean(options.header),
         showSource: Boolean(options.source),
+        customSource: options.customSource,
         propTables: options.propTables,
         mtrcConf
       };
