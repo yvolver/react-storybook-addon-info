@@ -192,6 +192,7 @@ var Story = function (_React$Component) {
             'div',
             { className: 'sbai-details-container', style: stylesheet.infoBody },
             this._getSourceCode(),
+            this._getCustomSourceCode(),
             this._getPropTables()
           )
         )
@@ -249,6 +250,7 @@ var Story = function (_React$Component) {
               this._getInfoHeader(),
               this._getInfoContent(),
               this._getSourceCode(),
+              this._getCustomSourceCode(),
               this._getPropTables()
             )
           )

@@ -105,6 +105,7 @@ export default class Story extends React.Component {
         <div className="sbai-details-wrapper" style={stylesheet.infoPage}>
           <div className="sbai-details-container" style={stylesheet.infoBody} >
             { this._getSourceCode() }
+            { this._getCustomSourceCode() }
             { this._getPropTables() }
           </div>
         </div>
@@ -146,6 +147,7 @@ export default class Story extends React.Component {
               { this._getInfoHeader() }
               { this._getInfoContent() }
               { this._getSourceCode() }
+              { this._getCustomSourceCode() }
               { this._getPropTables() }
             </div>
           </div>
